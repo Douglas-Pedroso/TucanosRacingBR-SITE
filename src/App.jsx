@@ -8,11 +8,10 @@ import { RankingPage } from './pages/Ranking';
 import { ComunidadePage } from './pages/Comunidade';
 import { PerfilPage } from './pages/Perfil';
 import { RegrasPage } from './pages/Regras';
-import './App.css';
 
 function App() {
   return (
-    <Router basename="/Tucanos">
+    <Router basename="/TucanosRacingBR-SITE">
       <AuthProvider>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
