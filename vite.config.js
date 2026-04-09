@@ -9,6 +9,7 @@ export default defineConfig({
     outDir: 'public',
     assetsDir: 'assets',
   },
+  publicDir: 'docs',
   server: {
     port: 5173,
     strictPort: false,
