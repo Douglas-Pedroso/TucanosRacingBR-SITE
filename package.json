@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:verify": "vite build && test -d dist && echo 'dist folder exists'",
     "lint": "eslint .",
     "preview": "vite preview"
   },
