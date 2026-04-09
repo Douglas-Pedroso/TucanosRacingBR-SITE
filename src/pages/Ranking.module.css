@@ -1,0 +1,202 @@
+.container {
+  padding: 2rem 0;
+}
+
+.header {
+  background: linear-gradient(135deg, #1f1f1f 0%, #2d2d2d 100%);
+  border-left: 5px solid #fbbf24;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.header h1 {
+  color: #fbbf24;
+  margin: 0 0 0.5rem 0;
+  font-size: 2.5rem;
+  text-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+}
+
+.header p {
+  color: #22c55e;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.tableContainer {
+  background-color: #1f1f1f;
+  border: 2px solid #404863;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead {
+  background-color: #0f0f0f;
+  border-bottom: 3px solid #22c55e;
+}
+
+.table th {
+  padding: 1rem;
+  text-align: left;
+  color: #fbbf24;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid #404863;
+  transition: all 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(34, 197, 94, 0.05);
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.topThree {
+  background-color: rgba(251, 191, 36, 0.05);
+  font-weight: 600;
+}
+
+.table td {
+  padding: 1rem;
+  color: #e0e0e0;
+}
+
+.position {
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 50px;
+}
+
+.medal {
+  display: inline-block;
+  min-width: 30px;
+  text-align: center;
+}
+
+.driver {
+  font-weight: 600;
+}
+
+.driverName {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.points {
+  font-size: 1.1rem;
+}
+
+.pointsValue {
+  color: #22c55e;
+  font-weight: 700;
+}
+
+.wins,
+.podiums {
+  text-align: center;
+  color: #a0aabf;
+}
+
+.info {
+  background-color: #1f1f1f;
+  border: 2px solid #404863;
+  border-left: 5px solid #22c55e;
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+
+.info h3 {
+  color: #e0e0e0;
+  margin: 0 0 1rem 0;
+  font-size: 1.3rem;
+}
+
+.info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.info li {
+  color: #a0aabf;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.info li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #22c55e;
+  font-weight: bold;
+}
+
+.info strong {
+  color: #fbbf24;
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .table th {
+    font-size: 0.8rem;
+  }
+
+  .info {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1.5rem;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.5rem 0.25rem;
+    font-size: 0.8rem;
+  }
+
+  .table th {
+    font-size: 0.7rem;
+  }
+
+  .position {
+    width: 40px;
+  }
+
+  .medal {
+    min-width: 25px;
+  }
+}
