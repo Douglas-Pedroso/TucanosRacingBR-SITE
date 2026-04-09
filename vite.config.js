@@ -6,10 +6,10 @@ export default defineConfig({
   plugins: [react()],
   base: '/TucanosRacingBR-SITE/',
   build: {
-    outDir: 'public',
+    outDir: 'dist',
     assetsDir: 'assets',
+    emptyOutDir: true,
   },
-  publicDir: 'docs',
   server: {
     port: 5173,
     strictPort: false,

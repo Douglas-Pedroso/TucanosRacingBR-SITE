@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node verify-build.js",
     "build:verify": "vite build && test -d dist && echo 'dist folder exists'",
+    "build:check": "npm run build && node -e \"const fs=require('fs'); console.log('public exists:', fs.existsSync('public')); fs.existsSync('public') && console.log(fs.readdirSync('public'));\"",
     "lint": "eslint .",
     "preview": "vite preview"
   },
