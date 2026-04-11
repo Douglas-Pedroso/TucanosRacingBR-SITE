@@ -102,6 +102,11 @@
   text-transform: uppercase;
 }
 
+.category.expired {
+  background-color: #ef4444;
+  color: #fff;
+}
+
 .eventDetails {
   display: flex;
   flex-direction: column;
