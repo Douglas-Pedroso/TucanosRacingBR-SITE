@@ -99,7 +99,7 @@ export function EventosPage() {
                 </p>
 
                 <button
-                  onClick={() => window.open('https://discord.gg/p8NEksdQnx', '_blank')}
+                  onClick={() => window.open('https://discord.gg/cwMzgtcPAk', '_blank')}
                   className={`${styles.button} ${
                     participations.includes(idx) ? styles.participating : ''
                   }`}
