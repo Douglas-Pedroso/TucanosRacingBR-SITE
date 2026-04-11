@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Layout } from '../components/Layout';
 import { useAuth } from '../hooks/useAuth';
-import { buscarPilotoPorNome } from '../data/pilotos';
+import { usePiloto } from '../hooks/usePilotos';
 import styles from './Perfil.module.css';
 
 export function PerfilPage() {
@@ -11,7 +11,7 @@ export function PerfilPage() {
   const [error, setError] = useState('');
 
   // Buscar dados do piloto logado
-  const pilotData = buscarPilotoPorNome(user?.nickname);
+  const { piloto: pilotData } = usePiloto(user?.nickname);
   const isPilotNotRegistered = !pilotData;
   const corridas = pilotData?.races || 0;
   const vitorias = pilotData?.wins || 0;

@@ -1,0 +1,26 @@
+{
+  "name": "tucanos-discord-bot",
+  "version": "1.0.0",
+  "description": "Bot Discord para gerenciar dados de pilotos - Tucanos Racing BR",
+  "type": "module",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "node bot.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.0",
+    "dotenv": "^16.3.1",
+    "simple-git": "^3.20.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "discord",
+    "bot",
+    "tucanos",
+    "racing",
+    "pilotos"
+  ],
+  "author": "",
+  "license": "MIT"
+}
