@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Layout } from '../components/Layout';
 import { useAuth } from '../hooks/useAuth';
-import { usePiloto } from '../hooks/usePilotos';
+import { usePiloto } from '../hooks/useRanking';
 import styles from './Perfil.module.css';
 
 export function PerfilPage() {
