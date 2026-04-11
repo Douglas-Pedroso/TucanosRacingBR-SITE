@@ -11,8 +11,8 @@ export function parseEventMessage(content) {
 
   const eventoText = eventoMatch[1].trim();
 
-  // Tenta fazer parse: Nome Data Hora Timezone
-  // Exemplo: "Suzuka 11/04/2026 18:00 Brasília"
+  // Tenta fazer parse: Nome Data Hora [hr] Timezone
+  // Exemplo: "Suzuka 11/04/2026 18:00 hr Brasília - Para se inscrever..."
   const partes = eventoText.split(/\s+/);
 
   if (partes.length < 4) return null; // Mínimo: Nome Data Hora Timezone
@@ -20,8 +20,13 @@ export function parseEventMessage(content) {
   const nome = partes[0];
   const data = partes[1];
   const hora = partes[2];
-  // Timezone: pegar apenas a próxima palavra (até - ou espaço)
-  const timezone = partes[3]; // Apenas uma palavra para timezone
+  
+  // Timezone: skip "hr" se existir, pegar próxima palavra
+  let timezoneIdx = 3;
+  if (partes[3].toLowerCase() === 'hr' && partes.length > 4) {
+    timezoneIdx = 4;
+  }
+  const timezone = partes[timezoneIdx];
 
   // Validar formato de data (DD/MM/YYYY)
   if (!/^\d{2}\/\d{2}\/\d{4}$/.test(data)) {
