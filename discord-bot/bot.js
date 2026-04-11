@@ -18,11 +18,26 @@ client.commands = new Collection();
 client.commands.set('deploy', deployCommand);
 
 // Evento: Bot conectado
-client.once('ready', () => {
+client.once('ready', async () => {
   console.log(`✅ Bot conectado como: ${client.user.tag}`);
   console.log(`🆔 Guild ID: ${process.env.GUILD_ID}`);
   console.log(`📢 Channel ID: ${process.env.CHANNEL_ID}`);
   console.log(`\n💡 Use /deploy no Discord para coletar dados e fazer push ao GitHub!\n`);
+
+  // Registrar slash commands na primeira conexão
+  try {
+    const guild = await client.guilds.fetch(process.env.GUILD_ID);
+    const commands = [
+      {
+        name: 'deploy',
+        description: 'Coleta dados de pilotos e faz deploy para o GitHub',
+      },
+    ];
+    await guild.commands.set(commands);
+    console.log('✅ Slash commands registrados!');
+  } catch (error) {
+    console.error('Erro ao registrar comandos:', error);
+  }
 });
 
 // Evento: Comando slash recebido
@@ -40,30 +55,19 @@ client.on('interactionCreate', async (interaction) => {
     await command.execute(interaction, client);
   } catch (error) {
     console.error('Erro ao executar comando:', error);
-    await interaction.reply({
-      content: '❌ Erro ao executar o comando!',
-      ephemeral: true,
-    });
+    // Só responder se a interaction não foi respondida ainda
+    if (!interaction.replied && !interaction.deferred) {
+      await interaction.reply({
+        content: '❌ Erro ao executar o comando!',
+        flags: 64,
+      });
+    } else if (interaction.deferred) {
+      await interaction.editReply('❌ Erro ao executar o comando!');
+    }
   }
 });
 
-// Registrar slash commands
-client.on('ready', async () => {
-  try {
-    const guild = await client.guilds.fetch(process.env.GUILD_ID);
-    const commands = [
-      {
-        name: 'deploy',
-        description: 'Coleta dados de pilotos e faz deploy para o GitHub',
-      },
-    ];
 
-    await guild.commands.set(commands);
-    console.log('✅ Slash commands registrados!');
-  } catch (error) {
-    console.error('Erro ao registrar comandos:', error);
-  }
-});
 
 // Login
 client.login(process.env.DISCORD_TOKEN);

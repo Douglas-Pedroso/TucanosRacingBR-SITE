@@ -7,9 +7,14 @@ export const data = new SlashCommandBuilder()
   .setDescription('Coleta dados de pilotos e faz deploy para o GitHub');
 
 export async function execute(interaction, client) {
-  await interaction.deferReply();
-
+  console.log(`\n🔍 Comando /deploy recebido de ${interaction.user.tag}`);
+  console.log(`⏰ Timestamp: ${new Date().toLocaleString('pt-BR')}`);
+  
   try {
+    // Defer a resposta imediatamente para ganhar tempo (75 segundos)
+    console.log('⏱️ Deferindo resposta...');
+    await interaction.deferReply({ ephemeral: true });
+    console.log('✅ Resposta deferida!');
     const channelId = process.env.CHANNEL_ID;
     const channel = await client.channels.fetch(channelId);
 
@@ -60,7 +65,7 @@ export async function execute(interaction, client) {
       await interaction.editReply(`❌ Erro ao fazer deploy: ${result.error}`);
     }
   } catch (error) {
-    console.error('Erro:', error);
+    console.error('❌ Erro:', error);
     await interaction.editReply(`❌ Erro ao processar comando: ${error.message}`);
   }
 }
