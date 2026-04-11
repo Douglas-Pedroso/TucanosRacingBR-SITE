@@ -1,5 +1,16 @@
 {
-  "eventos": [],
-  "ultimaAtualizacao": "2026-04-11T00:00:00.000Z",
-  "total": 0
+  "eventos": [
+    {
+      "nome": "Suzuka",
+      "data": "11/04/2026",
+      "hora": "18:00",
+      "timezone": "hr Brasília - Para se inscrever basta reagir a esta mensagem.",
+      "messageId": "1492560653032886312",
+      "participantes": [],
+      "status": "ativo",
+      "totalParticipantes": 0
+    }
+  ],
+  "ultimaAtualizacao": "2026-04-11T16:43:48.374Z",
+  "total": 1
 }
