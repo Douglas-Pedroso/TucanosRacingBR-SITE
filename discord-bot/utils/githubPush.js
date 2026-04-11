@@ -11,7 +11,8 @@ export async function pushToGitHub(
   localRepoPath,
   filePath = 'src/data/pilotos.json',
   githubToken,
-  githubRepo
+  githubRepo,
+  updateDocs = true // Se true, também atualiza em /docs
 ) {
   try {
     const git = simpleGit(localRepoPath);
@@ -29,19 +30,25 @@ export async function pushToGitHub(
     fs.writeFileSync(fullPath, JSON.stringify(jsonData, null, 2));
     console.log(`✅ JSON salvo em: ${filePath}`);
 
-    // IMPORTANTE: Também atualizar em /docs para GitHub Pages
-    const docsPath = path.join(localRepoPath, 'docs', 'pilotos.json');
-    fs.writeFileSync(docsPath, JSON.stringify(jsonData, null, 2));
-    console.log(`✅ JSON também salvo em: docs/pilotos.json`);
+    // Se updateDocs=true, também atualizar em /docs com o mesmo nome de arquivo
+    if (updateDocs) {
+      const fileName = path.basename(filePath);
+      const docsPath = path.join(localRepoPath, 'docs', fileName);
+      fs.writeFileSync(docsPath, JSON.stringify(jsonData, null, 2));
+      console.log(`✅ JSON também salvo em: docs/${fileName}`);
+      
+      // Git add ambos
+      await git.add(filePath);
+      await git.add(`docs/${fileName}`);
+    } else {
+      await git.add(filePath);
+    }
 
-    // Git add - adicionar ambos os arquivos
-    await git.add(filePath);
-    await git.add('docs/pilotos.json');
-    console.log(`✅ Ambos os arquivos adicionados ao git`);
+    console.log(`✅ Arquivo${updateDocs ? 's' : ''} adicionado ao git`);
 
     // Git commit
     const timestamp = new Date().toLocaleString('pt-BR');
-    await git.commit(`🤖 Atualização automática de pilotos - ${timestamp}`);
+    await git.commit(`🤖 Atualização automática - ${timestamp}`);
     console.log(`✅ Commit realizado`);
 
     // Git push
