@@ -2,15 +2,15 @@
   "pilotos": [
     {
       "nome": "Douglas Pedroso",
-      "vitorias": 0,
-      "podios": 0
+      "vitorias": 5,
+      "podios": 3
     },
     {
       "nome": "Brayan Santos",
-      "vitorias": 0,
-      "podios": 0
+      "vitorias": 5,
+      "podios": 3
     }
   ],
-  "ultimaAtualizacao": "2026-04-11T14:02:03.501Z",
+  "ultimaAtualizacao": "2026-04-11T15:00:00.000Z",
   "total": 2
 }
