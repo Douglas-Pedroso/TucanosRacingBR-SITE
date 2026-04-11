@@ -99,7 +99,7 @@ export function EventosPage() {
                 </p>
 
                 <button
-                  onClick={() => handleParticipate(idx)}
+                  onClick={() => window.open('https://discord.gg/p8NEksdQnx', '_blank')}
                   className={`${styles.button} ${
                     participations.includes(idx) ? styles.participating : ''
                   }`}
@@ -107,9 +107,7 @@ export function EventosPage() {
                 >
                   {evento.status === 'expirado' 
                     ? '❌ Evento Expirado'
-                    : participations.includes(idx) 
-                    ? '✓ Inscrito'
-                    : 'Participar (via Discord)'}
+                    : '💬 Ir para Discord'}
                 </button>
               </div>
             );
