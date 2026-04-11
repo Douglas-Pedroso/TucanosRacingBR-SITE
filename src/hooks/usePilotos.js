@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 /**
  * Hook para carregar dados de um piloto específico por nome
  */
@@ -9,9 +11,30 @@ export function usePiloto(nome) {
   useEffect(() => {
     async function carregarPiloto() {
       try {
-        const response = await fetch('/TucanosRacingBR-SITE/pilotos.json');
-        
-        if (!response.ok) {
+        // Tentar múltiplos caminhos
+        const urls = [
+          '/TucanosRacingBR-SITE/pilotos.json',
+          '/pilotos.json',
+          './pilotos.json',
+        ];
+
+        let response = null;
+        let lastError = null;
+
+        for (const url of urls) {
+          try {
+            const urlComTimestamp = `${url}?t=${Date.now()}`;
+            response = await fetch(urlComTimestamp);
+            
+            if (response.ok) {
+              break;
+            }
+          } catch (err) {
+            lastError = err;
+          }
+        }
+
+        if (!response || !response.ok) {
           throw new Error('Falha ao carregar dados');
         }
 
@@ -24,11 +47,7 @@ export function usePiloto(nome) {
       } catch (err) {
         console.error('Erro ao carregar piloto:', err);
         setError(err.message);
-        // Fallback: buscar nos dados padrão
-        const pilotoDefault = getPilotosDefault().find(
-          (p) => p.driver.toLowerCase() === nome?.toLowerCase()
-        );
-        setPiloto(pilotoDefault || null);
+        setPiloto(null);
       } finally {
         setLoading(false);
       }
@@ -58,10 +77,32 @@ export function usePilotos() {
   useEffect(() => {
     async function carregarPilotos() {
       try {
-        // Tentar carregar do arquivo local primeiro
-        const response = await fetch('/TucanosRacingBR-SITE/pilotos.json');
-        
-        if (!response.ok) {
+        // Tentar múltiplos caminhos
+        const urls = [
+          '/TucanosRacingBR-SITE/pilotos.json',
+          '/pilotos.json',
+          './pilotos.json',
+        ];
+
+        let response = null;
+        let lastError = null;
+
+        for (const url of urls) {
+          try {
+            const urlComTimestamp = `${url}?t=${Date.now()}`;
+            response = await fetch(urlComTimestamp);
+            
+            if (response.ok) {
+              console.log(`✅ Pilotos carregados de: ${url}`);
+              break;
+            }
+          } catch (err) {
+            lastError = err;
+            console.warn(`⚠️ Falha em ${url}:`, err.message);
+          }
+        }
+
+        if (!response || !response.ok) {
           throw new Error('Falha ao carregar dados');
         }
 
@@ -71,8 +112,7 @@ export function usePilotos() {
       } catch (err) {
         console.error('Erro ao carregar pilotos:', err);
         setError(err.message);
-        // Fallback: dados padrão
-        setPilotos(getPilotosDefault());
+        setPilotos([]);
       } finally {
         setLoading(false);
       }
@@ -116,36 +156,9 @@ function converterPilotos(pilotosBot) {
 }
 
 /**
- * Calcula pontos: 10 por vitória + 5 por pódio (não vitória)
+ * Calcula pontos: 25 por vitória + 8 por pódio
  */
 function calcularpuntos(vitorias, podios) {
-  const pontosPorVitoria = vitorias * 10;
-  const pontosPorPodio = (podios - vitorias) * 5; // Pódios que não são vitórias
-  return pontosPorVitoria + pontosPorPodio;
+  return vitorias * 25 + podios * 8;
 }
 
-/**
- * Dados padrão quando arquivo não está disponível
- */
-function getPilotosDefault() {
-  return [
-    {
-      id: 1,
-      position: 1,
-      driver: 'Brayan Santos',
-      wins: 2,
-      podiums: 2,
-      races: 2,
-      points: 30,
-    },
-    {
-      id: 2,
-      position: 2,
-      driver: 'Douglas Barros',
-      wins: 1,
-      podiums: 2,
-      races: 1,
-      points: 20,
-    },
-  ];
-}
