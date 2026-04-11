@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react';
 import { Layout } from '../components/Layout';
-import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useEventos } from '../hooks/useEventos';
 import styles from './Eventos.module.css';
 
@@ -8,16 +6,7 @@ import styles from './Eventos.module.css';
 
 export function EventosPage() {
   const { eventos, loading, error } = useEventos();
-  const [participations, setParticipations] = useLocalStorage('tucano_participations', []);
   const user = JSON.parse(localStorage.getItem('tucano_user'));
-
-  const handleParticipate = (eventId) => {
-    if (participations.includes(eventId)) {
-      setParticipations(participations.filter((id) => id !== eventId));
-    } else {
-      setParticipations([...participations, eventId]);
-    }
-  };
 
   const formatDate = (dateStr) => {
     try {
@@ -48,10 +37,6 @@ export function EventosPage() {
           <div className={styles.stat}>
             <span className={styles.statValue}>{eventos.length}</span>
             <span className={styles.statLabel}>Eventos Disponíveis</span>
-          </div>
-          <div className={styles.stat}>
-            <span className={styles.statValue}>{participations.length}</span>
-            <span className={styles.statLabel}>Eventos Inscritos</span>
           </div>
           <div className={styles.stat}>
             <span className={styles.statValue}>{totalParticipantes}</span>
