@@ -77,7 +77,8 @@ export async function execute(interaction, client) {
     if (result.success) {
       console.log('✅ Push para GitHub bem-sucedido');
       
-      const eventosList = eventos
+      // Usar jsonData.eventos que tem os campos calculados (totalParticipantes, status)
+      const eventosList = jsonData.eventos
         .map((e) => {
           const status = e.status === 'expirado' ? '⏰ EXPIRADO' : '🔴 ATIVO';
           return `• **${e.nome}** - ${e.data} às ${e.hora} (${e.timezone})\n  ${status} | ${e.totalParticipantes} participantes`;
