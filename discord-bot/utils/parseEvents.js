@@ -20,7 +20,8 @@ export function parseEventMessage(content) {
   const nome = partes[0];
   const data = partes[1];
   const hora = partes[2];
-  const timezone = partes.slice(3).join(' '); // Timezone pode ter múltiplas palavras
+  // Timezone: pegar apenas a próxima palavra (até - ou espaço)
+  const timezone = partes[3]; // Apenas uma palavra para timezone
 
   // Validar formato de data (DD/MM/YYYY)
   if (!/^\d{2}\/\d{2}\/\d{4}$/.test(data)) {

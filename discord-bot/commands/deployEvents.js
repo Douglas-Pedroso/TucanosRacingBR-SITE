@@ -11,10 +11,10 @@ export async function execute(interaction, client) {
   console.log(`⏰ Timestamp: ${new Date().toLocaleString('pt-BR')}`);
 
   try {
-    // PRIMEIRO: Responder super rápido ao Discord
+    // PRIMEIRO: Responder super rápido ao Discord (< 1 segundo)
     console.log('📤 Respondendo ao Discord IMEDIATAMENTE...');
     await interaction.reply({
-      content: '⏳ Processando eventos... aguarde!',
+      content: '⏳ Coletando eventos e participantes... aguarde!',
       flags: 64, // ephemeral
     });
     console.log('✅ Resposta enviada ao Discord!');
@@ -81,6 +81,7 @@ export async function execute(interaction, client) {
         .map((e) => {
           const status = e.status === 'expirado' ? '⏰ EXPIRADO' : '🔴 ATIVO';
           return `• **${e.nome}** - ${e.data} às ${e.hora} (${e.timezone})\n  ${status} | ${e.totalParticipantes} participantes`;
+
         })
         .join('\n');
 

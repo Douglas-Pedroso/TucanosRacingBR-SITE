@@ -24,7 +24,7 @@ client.once('ready', async () => {
   console.log(`✅ Bot conectado como: ${client.user.tag}`);
   console.log(`🆔 Guild ID: ${process.env.GUILD_ID}`);
   console.log(`📢 Channel ID (pilotos): ${process.env.CHANNEL_ID}`);
-  console.log(`🎪 Channel ID (eventos): ${process.env.EVENTOS_CHANNEL_ID || 'NÃO CONFIGURADO'}`);
+  console.log(`🎪 Channel ID (eventos): ${process.env.EVENTS_CHANNEL_ID || 'NÃO CONFIGURADO'}`);
   console.log(`\n💡 Use /deploy no Discord para coletar pilotos`);
   console.log(`💡 Use /deploy-eventos no Discord para coletar eventos\n`);
 
