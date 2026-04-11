@@ -91,6 +91,13 @@
   flex: 1;
 }
 
+.game {
+  color: #fbbf24;
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+  font-weight: 600;
+}
+
 .category {
   background-color: #22c55e;
   color: #0f0f0f;

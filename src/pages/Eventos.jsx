@@ -71,7 +71,7 @@ export function EventosPage() {
             return (
               <div key={idx} className={styles.eventCard}>
                 <div className={styles.eventHeader}>
-                  <h3>{evento.nome}</h3>
+                  <h3>{evento.nome} <span className={styles.game}>🎮 {evento.jogo || 'ACC'}</span></h3>
                   <span className={`${styles.category} ${evento.status === 'expirado' ? styles.expired : ''}`}>
                     {statusEmoji} {statusText}
                   </span>
@@ -79,7 +79,7 @@ export function EventosPage() {
 
                 <div className={styles.eventDetails}>
                   <div className={styles.detail}>
-                    <span className={styles.icon}>📍</span>
+                    <span className={styles.icon}>🕐</span>
                     <span>{evento.timezone}</span>
                   </div>
                   <div className={styles.detail}>

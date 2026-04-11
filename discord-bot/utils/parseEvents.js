@@ -1,7 +1,7 @@
 /**
  * Parser para extrair eventos de mensagens no canal #eventos
- * Formato esperado: "Evento: [Nome] [Data] [Hora] [Timezone]"
- * Exemplo: "Evento: Suzuka 11/04/2026 18:00 Brasília"
+ * Formato esperado: "Evento: [Nome] [Data] [Hora] [Timezone] - [Jogo/Local]"
+ * Exemplo: "Evento: Suzuka 11/04/2026 18:00 Brasília - Assetto Corsa Competizione"
  */
 
 export function parseEventMessage(content) {
@@ -11,9 +11,19 @@ export function parseEventMessage(content) {
 
   const eventoText = eventoMatch[1].trim();
 
+  // Separar jogo/local (depois do -)
+  let mainPart = eventoText;
+  let jogo = 'ACC';
+  
+  if (eventoText.includes('-')) {
+    const parts = eventoText.split('-');
+    mainPart = parts[0].trim();
+    jogo = parts.slice(1).join('-').trim(); // Pega tudo depois do primeiro -
+  }
+
   // Tenta fazer parse: Nome Data Hora [hr] Timezone
-  // Exemplo: "Suzuka 11/04/2026 18:00 hr Brasília - Para se inscrever..."
-  const partes = eventoText.split(/\s+/);
+  // Exemplo: "Suzuka 11/04/2026 18:00 hr Brasília"
+  const partes = mainPart.split(/\s+/);
 
   if (partes.length < 4) return null; // Mínimo: Nome Data Hora Timezone
 
@@ -43,6 +53,7 @@ export function parseEventMessage(content) {
     data,
     hora,
     timezone,
+    jogo,
   };
 }
 
