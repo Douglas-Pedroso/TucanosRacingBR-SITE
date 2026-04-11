@@ -1,7 +1,7 @@
 import { Client, GatewayIntentBits, Collection } from 'discord.js';
 import dotenv from 'dotenv';
 import * as deployCommand from './commands/deploy.js';
-import * as deployEventosCommand from './commands/deployEventos.js';
+import * as deployEventsCommand from './commands/deployEvents.js';
 
 dotenv.config();
 
@@ -17,7 +17,7 @@ const client = new Client({
 // Armazenar comandos
 client.commands = new Collection();
 client.commands.set('deploy', deployCommand);
-client.commands.set('deploy-eventos', deployEventosCommand);
+client.commands.set('deploy-eventos', deployEventsCommand);
 
 // Evento: Bot conectado
 client.once('ready', async () => {
