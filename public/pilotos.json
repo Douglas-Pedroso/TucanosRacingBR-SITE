@@ -14,8 +14,13 @@
       "nome": "Dexter",
       "vitorias": 0,
       "podios": 0
+    },
+    {
+      "nome": "Nazaré",
+      "vitorias": 0,
+      "podios": 0
     }
   ],
-  "ultimaAtualizacao": "2026-04-11T18:20:10.909Z",
-  "total": 3
+  "ultimaAtualizacao": "2026-04-11T18:24:33.054Z",
+  "total": 4
 }
