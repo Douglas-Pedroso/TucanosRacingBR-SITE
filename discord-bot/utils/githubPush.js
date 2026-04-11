@@ -29,9 +29,15 @@ export async function pushToGitHub(
     fs.writeFileSync(fullPath, JSON.stringify(jsonData, null, 2));
     console.log(`✅ JSON salvo em: ${filePath}`);
 
-    // Git add
+    // IMPORTANTE: Também atualizar em /docs para GitHub Pages
+    const docsPath = path.join(localRepoPath, 'docs', 'pilotos.json');
+    fs.writeFileSync(docsPath, JSON.stringify(jsonData, null, 2));
+    console.log(`✅ JSON também salvo em: docs/pilotos.json`);
+
+    // Git add - adicionar ambos os arquivos
     await git.add(filePath);
-    console.log(`✅ Arquivo adicionado ao git`);
+    await git.add('docs/pilotos.json');
+    console.log(`✅ Ambos os arquivos adicionados ao git`);
 
     // Git commit
     const timestamp = new Date().toLocaleString('pt-BR');
