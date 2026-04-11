@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 /**
  * Hook para carregar dados de pilotos do JSON e calcular ranking
- * Carrega de: src/data/pilotos.json
+ * Carrega de: public/pilotos.json
  * Calcula pontos: Vitória = 25 pts, Pódio extra = 8pts
  */
 export function useRanking() {
@@ -15,11 +15,34 @@ export function useRanking() {
       try {
         setLoading(true);
         
-        // Carregar o JSON da pasta public
-        const response = await fetch('/TucanosRacingBR-SITE/pilotos.json');
-        
-        if (!response.ok) {
-          throw new Error('Erro ao carregar dados de pilotos');
+        // Carregar o JSON da pasta public - tentar múltiplos caminhos
+        let urls = [
+          '/TucanosRacingBR-SITE/pilotos.json',
+          '/pilotos.json',
+          './pilotos.json',
+        ];
+
+        let response = null;
+        let lastError = null;
+
+        for (const url of urls) {
+          try {
+            // Adicionar timestamp para evitar cache
+            const urlComTimestamp = `${url}?t=${Date.now()}`;
+            response = await fetch(urlComTimestamp);
+            
+            if (response.ok) {
+              console.log(`✅ Pilotos carregados de: ${url}`);
+              break;
+            }
+          } catch (err) {
+            lastError = err;
+            console.warn(`⚠️ Falha ao carregar de ${url}:`, err.message);
+          }
+        }
+
+        if (!response || !response.ok) {
+          throw new Error(`Não foi possível carregar pilotos. Erro: ${lastError?.message || 'Desconhecido'}`);
         }
 
         const data = await response.json();
@@ -46,10 +69,11 @@ export function useRanking() {
           piloto.position = index + 1;
         });
 
+        console.log('📊 Pilotos carregados:', pilotosProcessados);
         setPilotos(pilotosProcessados);
         setError(null);
       } catch (err) {
-        console.error('Erro ao carregar pilotos:', err);
+        console.error('❌ Erro ao carregar pilotos:', err);
         setError(err.message);
         setPilotos([]);
       } finally {
