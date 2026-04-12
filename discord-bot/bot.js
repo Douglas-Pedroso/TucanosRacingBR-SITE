@@ -2,6 +2,7 @@ import { Client, GatewayIntentBits, Collection } from 'discord.js';
 import dotenv from 'dotenv';
 import * as deployCommand from './commands/deploy.js';
 import * as deployEventsCommand from './commands/deployEvents.js';
+import * as expirarEventoCommand from './commands/expirarEvento.js';
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ const client = new Client({
 client.commands = new Collection();
 client.commands.set('deploy', deployCommand);
 client.commands.set('deploy-eventos', deployEventsCommand);
+client.commands.set('expirar-evento', expirarEventoCommand);
 
 // Evento: Bot conectado
 client.once('ready', async () => {
@@ -26,7 +28,8 @@ client.once('ready', async () => {
   console.log(`📢 Channel ID (pilotos): ${process.env.CHANNEL_ID}`);
   console.log(`🎪 Channel ID (eventos): ${process.env.EVENTS_CHANNEL_ID || 'NÃO CONFIGURADO'}`);
   console.log(`\n💡 Use /deploy no Discord para coletar pilotos`);
-  console.log(`💡 Use /deploy-eventos no Discord para coletar eventos\n`);
+  console.log(`💡 Use /deploy-eventos no Discord para coletar eventos`);
+  console.log(`💡 Use /expirar-evento no Discord para marcar eventos como expirados\n`);
 
   // Registrar slash commands na primeira conexão
   try {
@@ -39,6 +42,10 @@ client.once('ready', async () => {
       {
         name: 'deploy-eventos',
         description: 'Coleta eventos e participantes (reações) e faz deploy',
+      },
+      {
+        name: 'expirar-evento',
+        description: 'Marca um evento como expirado',
       },
     ];
     await guild.commands.set(commands);
