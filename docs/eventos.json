@@ -10,10 +10,21 @@
       "participantes": [
         "doug_nuts"
       ],
-      "status": "expirado",
+      "status": "ativo",
       "totalParticipantes": 1
+    },
+    {
+      "nome": "Monza",
+      "data": "23/05/2026",
+      "hora": "18:00",
+      "timezone": "Brasília",
+      "jogo": "ACC",
+      "messageId": "1500957644083429657",
+      "participantes": [],
+      "status": "ativo",
+      "totalParticipantes": 0
     }
   ],
-  "ultimaAtualizacao": "2026-05-04T19:07:58.974Z",
-  "total": 1
+  "ultimaAtualizacao": "2026-05-04T20:30:10.691Z",
+  "total": 2
 }
