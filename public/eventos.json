@@ -1,19 +1,17 @@
 {
   "eventos": [
     {
-      "nome": "Suzuka",
-      "data": "11/04/2026",
+      "nome": "Monza",
+      "data": "11/05/2026",
       "hora": "18:00",
       "timezone": "Brasília",
-      "messageId": "1492560653032886312",
-      "participantes": [
-        "doug_nuts",
-        "robson_charada_24632"
-      ],
-      "status": "expirado",
-      "totalParticipantes": 2
+      "jogo": "ACC",
+      "messageId": "1500933385885843557",
+      "participantes": [],
+      "status": "ativo",
+      "totalParticipantes": 0
     }
   ],
-  "ultimaAtualizacao": "2026-04-12T17:40:12.103Z",
+  "ultimaAtualizacao": "2026-05-04T18:53:36.455Z",
   "total": 1
 }
