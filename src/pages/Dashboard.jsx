@@ -15,7 +15,7 @@ export function DashboardPage() {
       <div className={styles.container}>
         <div className={styles.hero}>
           <h1>Bem-vindo, {user?.nickname}! 🏁</h1>
-          <p>Bem-vindo à família de pilotos virtuais Tucanos Racing BR</p>
+          <p>Bem vindos à Tucanos Cup</p>
         </div>
 
         <div className={styles.grid}>
@@ -37,12 +37,6 @@ export function DashboardPage() {
             <p>Veja o desempenho dos pilotos</p>
           </div>
 
-          <div className={styles.card} onClick={() => handleNavigate('/comunidade')}>
-            <div className={styles.cardIcon}>💬</div>
-            <h3>Comunidade</h3>
-            <p>Conecte-se com outros pilotos</p>
-          </div>
-
           <div className={styles.card} onClick={() => handleNavigate('/regras')}>
             <div className={styles.cardIcon}>📜</div>
             <h3>Regras</h3>
@@ -62,8 +56,8 @@ export function DashboardPage() {
             <div className={styles.timelineItem}>
               <div className={styles.timelineMarker}></div>
               <div className={styles.timelineContent}>
-                <h4>Bem-vindo à Tucanos Racing BR</h4>
-                <p>Você acaba de se juntar à comunidade. Explore os eventos e conheca outros pilotos!</p>
+                <h4>Bem-vindo à Tucanos Cup</h4>
+                <p>Pronto para competir? Confira os eventos e junte-se à corrida!</p>
               </div>
             </div>
           </div>

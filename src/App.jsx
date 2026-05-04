@@ -5,7 +5,6 @@ import { LoginPage } from './pages/Login';
 import { DashboardPage } from './pages/Dashboard';
 import { EventosPage } from './pages/Eventos';
 import { RankingPage } from './pages/Ranking';
-import { ComunidadePage } from './pages/Comunidade';
 import { PerfilPage } from './pages/Perfil';
 import { RegrasPage } from './pages/Regras';
 
@@ -39,15 +38,6 @@ function App() {
             element={
               <ProtectedRoute>
                 <RankingPage />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="/comunidade"
-            element={
-              <ProtectedRoute>
-                <ComunidadePage />
               </ProtectedRoute>
             }
           />

@@ -2,7 +2,7 @@
   "name": "tucanos-racing-br",
   "private": true,
   "version": "1.0.0",
-  "description": "Comunidade de Automobilismo Virtual - Tucanos Racing BR",
+  "description": "Comunidade de Automobilismo Virtual - TUCANOS CUP",
   "type": "module",
   "scripts": {
     "dev": "vite",

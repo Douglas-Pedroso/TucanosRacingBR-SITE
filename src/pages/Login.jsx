@@ -30,8 +30,8 @@ export function LoginPage() {
     <div className={styles.container}>
       <div className={styles.card}>
         <div className={styles.header}>
-          <img src="/logo.png" alt="Tucanos Racing BR" className={styles.logo} />
-          <h1>Tucanos Racing BR</h1>
+          <img src="/logo.png" alt="TUCANOS CUP" className={styles.logo} />
+          <h1>TUCANOS CUP</h1>
           <p>Comunidade de Automobilismo Virtual</p>
         </div>
 

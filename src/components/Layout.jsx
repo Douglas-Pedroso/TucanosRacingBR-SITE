@@ -16,15 +16,14 @@ export function Layout({ children }) {
       <nav className={styles.navbar}>
         <div className={styles.navContent}>
           <Link to="/dashboard" className={styles.logo}>
-            <img src="/Tucanos/logo.svg?v=1" alt="Tucanos Racing BR" className={styles.logoImg} />
-            <span>Tucanos Racing BR</span>
+            <img src={`${window.location.pathname.includes('/TucanosRacingBR-SITE/') ? '/TucanosRacingBR-SITE' : ''}/logo.png`} alt="TUCANOS CUP" className={styles.logoImg} />
+            <span>TUCANOS CUP</span>
           </Link>
 
           <div className={styles.navLinks}>
             <Link to="/dashboard">Dashboard</Link>
             <Link to="/eventos">Eventos</Link>
             <Link to="/ranking">Ranking</Link>
-            <Link to="/comunidade">Comunidade</Link>
             <Link to="/perfil">Perfil</Link>
             <Link to="/regras">Regras</Link>
           </div>

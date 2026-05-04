@@ -13,7 +13,6 @@ export function PerfilPage() {
   // Buscar dados do piloto logado
   const { piloto: pilotData } = usePiloto(user?.nickname);
   const isPilotNotRegistered = !pilotData;
-  const corridas = pilotData?.races || 0;
   const vitorias = pilotData?.wins || 0;
   const podios = pilotData?.podiums || 0;
   const pontos = pilotData?.points || 0;
@@ -138,10 +137,6 @@ export function PerfilPage() {
             </div>
           ) : (
             <div className={styles.statsGrid}>
-              <div className={styles.stat}>
-                <span className={styles.statValue}>{corridas}</span>
-                <span className={styles.statLabel}>Corridas Disputadas</span>
-              </div>
               <div className={styles.stat}>
                 <span className={styles.statValue}>{vitorias}</span>
                 <span className={styles.statLabel}>Vitórias</span>

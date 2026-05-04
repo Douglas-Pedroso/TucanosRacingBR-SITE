@@ -34,22 +34,20 @@ client.once('ready', async () => {
   // Registrar slash commands na primeira conexão
   try {
     const guild = await client.guilds.fetch(process.env.GUILD_ID);
+    
+    // Deletar comandos antigos
+    await guild.commands.set([]);
+    console.log('🗑️  Comandos antigos deletados');
+    
+    // Usar as definições completas dos comandos
     const commands = [
-      {
-        name: 'deploy',
-        description: 'Coleta dados de pilotos e faz deploy para o GitHub',
-      },
-      {
-        name: 'deploy-eventos',
-        description: 'Coleta eventos e participantes (reações) e faz deploy',
-      },
-      {
-        name: 'expirar-evento',
-        description: 'Marca um evento como expirado',
-      },
+      deployCommand.data.toJSON(),
+      deployEventsCommand.data.toJSON(),
+      expirarEventoCommand.data.toJSON(),
     ];
+    
     await guild.commands.set(commands);
-    console.log('✅ Slash commands registrados! (/deploy, /deploy-eventos)');
+    console.log('✅ Slash commands reregistrados! (/deploy, /deploy-eventos, /expirar-evento)');
   } catch (error) {
     console.error('Erro ao registrar comandos:', error);
   }

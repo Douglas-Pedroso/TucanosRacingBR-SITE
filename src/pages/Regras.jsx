@@ -138,8 +138,8 @@ export function RegrasPage() {
 
           <div className={styles.footer}>
             <p>
-              ✓ Ao participar da Tucanos Racing BR, você concorda em seguir todas as regras acima e
-              contribuir para manter nossa comunidade segura e acolhedora.
+              ✓ Ao ingressar na Tucanos Cup, você concorda em seguir todas as regras acima e
+              competir com respeito, segurança e espírito esportivo.
             </p>
           </div>
         </div>

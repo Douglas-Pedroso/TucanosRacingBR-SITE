@@ -25,15 +25,29 @@ export async function execute(interaction, client) {
       flags: 64, // ephemeral
     });
     console.log('✅ Resposta enviada ao Discord!');
-
-    const nomeEvento = interaction.options.getString('nome').toLowerCase();
+    console.log('📋 Opções recebidas:', interaction.options);
+    
+    const nomeEvento = interaction.options.getString('nome');
+    console.log(`🔍 Nome evento recebido: "${nomeEvento}" (typeof: ${typeof nomeEvento})`);
+    
+    if (!nomeEvento || nomeEvento.trim() === '') {
+      console.log('❌ Nome do evento vazio ou nulo');
+      return await interaction.editReply('❌ Por favor, forneça o nome do evento!');
+    }
 
     // Ler arquivo de eventos
     const eventsFilePath = path.join(process.env.LOCAL_REPO_PATH, 'public', 'eventos.json');
+    
+    if (!fs.existsSync(eventsFilePath)) {
+      return await interaction.editReply('❌ Arquivo de eventos não encontrado!');
+    }
+    
     const eventosData = JSON.parse(fs.readFileSync(eventsFilePath, 'utf-8'));
 
-    // Encontrar evento pelo nome
-    const eventoIdx = eventosData.eventos.findIndex(e => e.nome.toLowerCase() === nomeEvento);
+    // Encontrar evento pelo nome (case-insensitive, partial match)
+    const eventoIdx = eventosData.eventos.findIndex(e => 
+      e.nome.toLowerCase().includes(nomeEvento.toLowerCase())
+    );
 
     if (eventoIdx === -1) {
       const nomes = eventosData.eventos.map(e => e.nome).join(', ') || 'nenhum';

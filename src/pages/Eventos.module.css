@@ -3,7 +3,7 @@
 }
 
 .header {
-  background: linear-gradient(135deg, #1f1f1f 0%, #2d2d2d 100%);
+  background: linear-gradient(135deg, rgba(31, 31, 31, 0.85) 0%, rgba(45, 45, 45, 0.85) 100%);
   border-left: 5px solid #fbbf24;
   padding: 2rem;
   border-radius: 0.5rem;
@@ -32,7 +32,7 @@
 }
 
 .stat {
-  background-color: #1f1f1f;
+  background-color: rgba(31, 31, 31, 0.85);
   border-left: 4px solid #22c55e;
   padding: 1.5rem;
   border-radius: 0.375rem;
@@ -59,7 +59,7 @@
 }
 
 .eventCard {
-  background-color: #1f1f1f;
+  background-color: rgba(31, 31, 31, 0.85);
   border: 2px solid #404863;
   border-radius: 0.5rem;
   padding: 1.5rem;
