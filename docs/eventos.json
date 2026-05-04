@@ -7,11 +7,13 @@
       "timezone": "Brasília",
       "jogo": "ACC",
       "messageId": "1500933385885843557",
-      "participantes": [],
+      "participantes": [
+        "doug_nuts"
+      ],
       "status": "ativo",
-      "totalParticipantes": 0
+      "totalParticipantes": 1
     }
   ],
-  "ultimaAtualizacao": "2026-05-04T18:53:36.455Z",
+  "ultimaAtualizacao": "2026-05-04T18:55:48.820Z",
   "total": 1
 }
