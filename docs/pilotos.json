@@ -19,8 +19,13 @@
       "nome": "Nazaré",
       "vitorias": 0,
       "podios": 0
+    },
+    {
+      "nome": "Hulk",
+      "vitorias": 1,
+      "podios": 1
     }
   ],
-  "ultimaAtualizacao": "2026-05-04T22:01:16.238Z",
-  "total": 4
+  "ultimaAtualizacao": "2026-05-04T22:01:36.180Z",
+  "total": 5
 }
