@@ -24,8 +24,13 @@
       "nome": "Hulk",
       "vitorias": 0,
       "podios": 0
+    },
+    {
+      "nome": "Nando",
+      "vitorias": 0,
+      "podios": 0
     }
   ],
-  "ultimaAtualizacao": "2026-05-04T22:02:07.496Z",
-  "total": 5
+  "ultimaAtualizacao": "2026-05-04T22:03:43.329Z",
+  "total": 6
 }
