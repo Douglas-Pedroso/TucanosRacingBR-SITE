@@ -2,19 +2,6 @@
   "eventos": [
     {
       "nome": "Monza",
-      "data": "11/05/2026",
-      "hora": "18:00",
-      "timezone": "Brasília",
-      "jogo": "ACC",
-      "messageId": "1500933385885843557",
-      "participantes": [
-        "doug_nuts"
-      ],
-      "status": "ativo",
-      "totalParticipantes": 1
-    },
-    {
-      "nome": "Monza",
       "data": "23/05/2026",
       "hora": "18:00",
       "timezone": "Brasília",
@@ -25,6 +12,6 @@
       "totalParticipantes": 0
     }
   ],
-  "ultimaAtualizacao": "2026-05-04T20:30:10.691Z",
-  "total": 2
+  "ultimaAtualizacao": "2026-05-04T20:41:01.386Z",
+  "total": 1
 }
