@@ -16,6 +16,22 @@ export function PatrocinidoresPage() {
       website: 'https://www.cafehonorio.com.br/',
       isImage: true,
     },
+    {
+      id: 2,
+      nome: 'Guardemais Selfstorage+Logística',
+      logo: `${basePath}/guardelogo.png`,
+      descricao: 'Soluções de armazenamento e logística',
+      website: 'https://guardemais.com.br/',
+      isImage: true,
+    },
+    {
+      id: 3,
+      nome: 'LEGRAND Leather',
+      logo: `${basePath}/legrandlogo.png`,
+      descricao: 'Artigos em couro de qualidade premium',
+      website: 'https://legrandleather.com.br/',
+      isImage: true,
+    },
   ];
 
   return (
