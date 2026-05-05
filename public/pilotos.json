@@ -29,8 +29,13 @@
       "nome": "Nando",
       "vitorias": 0,
       "podios": 0
+    },
+    {
+      "nome": "Batutinha123",
+      "vitorias": 1,
+      "podios": 0
     }
   ],
-  "ultimaAtualizacao": "2026-05-05T03:01:37.393Z",
-  "total": 6
+  "ultimaAtualizacao": "2026-05-05T03:03:06.316Z",
+  "total": 7
 }
