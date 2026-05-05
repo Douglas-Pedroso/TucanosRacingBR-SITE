@@ -43,6 +43,12 @@ export function DashboardPage() {
             <p>Conheça as normas da comunidade</p>
           </div>
 
+          <div className={styles.card} onClick={() => handleNavigate('/patrocinadores')}>
+            <div className={styles.cardIcon}>💼</div>
+            <h3>Patrocinadores</h3>
+            <p>Conheça quem apoia a Tucanos Cup</p>
+          </div>
+
           <div className={styles.card} onClick={() => handleNavigate('/perfil')}>
             <div className={styles.cardIcon}>🎯</div>
             <h3>Meu Progresso</h3>

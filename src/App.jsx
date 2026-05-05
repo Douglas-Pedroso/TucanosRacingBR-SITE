@@ -7,6 +7,7 @@ import { EventosPage } from './pages/Eventos';
 import { RankingPage } from './pages/Ranking';
 import { PerfilPage } from './pages/Perfil';
 import { RegrasPage } from './pages/Regras';
+import { PatrocinidoresPage } from './pages/Patrocinadores';
 
 function App() {
   return (
@@ -56,6 +57,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <RegrasPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/patrocinadores"
+            element={
+              <ProtectedRoute>
+                <PatrocinidoresPage />
               </ProtectedRoute>
             }
           />

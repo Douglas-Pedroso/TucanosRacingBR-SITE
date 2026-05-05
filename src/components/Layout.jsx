@@ -26,6 +26,7 @@ export function Layout({ children }) {
             <Link to="/ranking">Ranking</Link>
             <Link to="/perfil">Perfil</Link>
             <Link to="/regras">Regras</Link>
+            <Link to="/patrocinadores">Patrocinadores</Link>
           </div>
 
           <div className={styles.userSection}>
