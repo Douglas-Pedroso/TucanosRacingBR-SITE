@@ -1,17 +1,17 @@
 {
   "eventos": [
     {
-      "nome": "Monza",
-      "data": "23/05/2026",
-      "hora": "18:00",
+      "nome": "Suzuka",
+      "data": "00/00/0000",
+      "hora": "00:00",
       "timezone": "Brasília",
       "jogo": "ACC",
-      "messageId": "1500957644083429657",
+      "messageId": "1501233800305446963",
       "participantes": [],
       "status": "expirado",
       "totalParticipantes": 0
     }
   ],
-  "ultimaAtualizacao": "2026-05-05T12:43:31.380Z",
+  "ultimaAtualizacao": "2026-05-05T14:47:16.069Z",
   "total": 1
 }
