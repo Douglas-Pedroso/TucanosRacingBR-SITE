@@ -12,7 +12,7 @@
     },
     {
       "nome": "Dexter",
-      "vitorias": 0,
+      "vitorias": 1,
       "podios": 0
     },
     {
@@ -31,6 +31,6 @@
       "podios": 0
     }
   ],
-  "ultimaAtualizacao": "2026-05-04T22:03:43.329Z",
+  "ultimaAtualizacao": "2026-05-05T03:01:37.393Z",
   "total": 6
 }
