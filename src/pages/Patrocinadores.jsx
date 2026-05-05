@@ -13,7 +13,7 @@ export function PatrocinidoresPage() {
       nome: 'Café Honório',
       logo: `${basePath}/cafehonorio.png`,
       descricao: 'Apoiador oficial da Tucanos Cup',
-      website: '#',
+      website: 'https://www.cafehonorio.com.br/',
       isImage: true,
     },
   ];
