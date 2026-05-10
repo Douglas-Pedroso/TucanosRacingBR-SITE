@@ -2,7 +2,7 @@
   "pilotos": [
     {
       "nome": "Douglas Pedroso",
-      "pontos": 25,
+      "pontos": 26,
       "vitorias": 1,
       "podios": 1
     },
@@ -37,6 +37,6 @@
       "podios": 0
     }
   ],
-  "ultimaAtualizacao": "2026-05-10T13:28:28.547Z",
+  "ultimaAtualizacao": "2026-05-10T13:29:29.305Z",
   "total": 6
 }
