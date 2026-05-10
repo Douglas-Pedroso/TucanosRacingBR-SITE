@@ -41,8 +41,15 @@
       "vitorias": 0,
       "podios": 0,
       "dataCadastro": "2026-05-10T14:00:00.000Z"
+    },
+    {
+      "nome": "Pilototeste",
+      "pontos": 0,
+      "vitorias": 0,
+      "podios": 0,
+      "dataCadastro": "2026-05-10T14:12:44.197Z"
     }
   ],
-  "ultimaAtualizacao": "2026-05-10T14:09:04.551Z",
-  "total": 6
+  "ultimaAtualizacao": "2026-05-10T14:12:44.197Z",
+  "total": 7
 }
