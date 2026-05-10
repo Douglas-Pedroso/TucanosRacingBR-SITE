@@ -2,9 +2,9 @@
   "pilotos": [
     {
       "nome": "Douglas Pedroso",
-      "pontos": 26,
-      "vitorias": 1,
-      "podios": 1
+      "pontos": 0,
+      "vitorias": 0,
+      "podios": 0
     },
     {
       "nome": "Brayan Santos",
@@ -37,6 +37,6 @@
       "podios": 0
     }
   ],
-  "ultimaAtualizacao": "2026-05-10T13:29:29.305Z",
+  "ultimaAtualizacao": "2026-05-10T13:30:00.294Z",
   "total": 6
 }
