@@ -2,35 +2,41 @@
   "pilotos": [
     {
       "nome": "Douglas Pedroso",
-      "vitorias": 0,
-      "podios": 0
+      "pontos": 25,
+      "vitorias": 1,
+      "podios": 1
     },
     {
       "nome": "Brayan Santos",
+      "pontos": 0,
       "vitorias": 0,
       "podios": 0
     },
     {
       "nome": "Dexter",
+      "pontos": 0,
       "vitorias": 0,
       "podios": 0
     },
     {
       "nome": "Nazaré",
+      "pontos": 0,
       "vitorias": 0,
       "podios": 0
     },
     {
       "nome": "Hulk",
+      "pontos": 0,
       "vitorias": 0,
       "podios": 0
     },
     {
       "nome": "Nando",
+      "pontos": 0,
       "vitorias": 0,
       "podios": 0
     }
   ],
-  "ultimaAtualizacao": "2026-05-05T13:47:12.320Z",
+  "ultimaAtualizacao": "2026-05-10T13:28:28.547Z",
   "total": 6
 }
