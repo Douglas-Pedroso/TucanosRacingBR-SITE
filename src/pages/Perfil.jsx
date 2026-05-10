@@ -41,13 +41,32 @@ export function PerfilPage() {
     setError('');
   };
 
-  const joinedDate = new Date(user?.joinedAt).toLocaleDateString('pt-BR', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+  // Determinar qual data mostrar
+  const getDisplayDate = () => {
+    // Se é um piloto registrado e tem data de cadastro, usar essa
+    if (pilotData?.dataCadastro) {
+      const dataCadastro = new Date(pilotData.dataCadastro);
+      return dataCadastro.toLocaleDateString('pt-BR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+    }
+    
+    // Caso contrário, usar a data de login
+    const dataLogin = new Date(user?.joinedAt);
+    return dataLogin.toLocaleDateString('pt-BR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  };
+
+  const displayDate = getDisplayDate();
 
   return (
     <Layout>
@@ -75,7 +94,7 @@ export function PerfilPage() {
 
               <div className={styles.infoItem}>
                 <span className={styles.label}>Membro desde</span>
-                <span className={styles.value}>{joinedDate}</span>
+                <span className={styles.value}>{displayDate}</span>
               </div>
 
               <div className={styles.infoItem}>

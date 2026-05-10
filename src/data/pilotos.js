@@ -1,17 +1,19 @@
 /**
- * 📊 Dados dos Pilotos da Tucanos Racing BR
+ * 📊 Dados dos Pilotos da Tucanos Racing BR (Fallback)
  * 
  * Estrutura:
  * - position: Posição no ranking
  * - driver: Nome do piloto
+ * - points: Pontos totais (definidos manualmente no Discord)
  * - wins: Número de vitórias
- * - podiums: Número de pódios (incluindo vitórias)
- * - races: Corridas disputadas
- * - points: Pontos totais
+ * - podiums: Número de pódios
  * 
  * Sistema de Pontos:
- * - Vitória: 10 pontos
- * - Pódio: 5 pontos
+ * - Pontos são definidos MANUALMENTE no Discord
+ * - Formato: "Nome: pontos,vitórias,pódios"
+ * - Exemplo: "Brayan Santos: 30,2,2"
+ * 
+ * Estes dados são um FALLBACK quando pilotos.json não pode ser carregado
  */
 
 export const pilotos = [
@@ -19,19 +21,17 @@ export const pilotos = [
     id: 1,
     position: 1,
     driver: 'Brayan Santos',
+    points: 30,
     wins: 2,
     podiums: 2,
-    races: 2,
-    points: 30, // 2 vitórias (10+10) + 2 pódios (5+5)
   },
   {
     id: 2,
     position: 2,
     driver: 'Douglas Barros',
+    points: 20,
     wins: 1,
     podiums: 2,
-    races: 1,
-    points: 20, // 1 vitória (10) + 2 pódios (5+5)
   },
 ];
 

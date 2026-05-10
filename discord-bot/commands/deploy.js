@@ -1,4 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
+import fs from 'fs';
+import path from 'path';
 import { parseChannelMessages, formatPilotosJSON } from '../utils/parseData.js';
 import { pushToGitHub } from '../utils/githubPush.js';
 
@@ -55,13 +57,38 @@ export async function execute(interaction, client) {
     if (pilotos.length === 0) {
       console.log('❌ Nenhum piloto encontrado');
       return await interaction.editReply(
-        '❌ Nenhum dado de piloto encontrado no formato correto!\n\nFormato esperado: `Nome: vitórias,pódios`'
+        '❌ Nenhum dado de piloto encontrado no formato correto!\n\nFormato esperado: `Nome: pontos,vitórias,pódios`\nExemplo: `Douglas Pedroso: 25,1,1`'
       );
     }
 
-    // Formatar JSON
-    const jsonData = formatPilotosJSON(pilotos);
-    console.log('📝 JSON formatado');
+    // Carregar pilotos antigos para preservar dataCadastro
+    let pilotosAntigos = [];
+    try {
+      const caminhoJson = path.join(
+        process.env.LOCAL_REPO_PATH || '.',
+        process.env.GITHUB_REPO_PATH || 'public',
+        process.env.GITHUB_FILE_NAME || 'pilotos.json'
+      );
+      console.log(`🔍 Procurando arquivo antigo em: ${caminhoJson}`);
+      if (fs.existsSync(caminhoJson)) {
+        const conteudo = fs.readFileSync(caminhoJson, 'utf8');
+        const dados = JSON.parse(conteudo);
+        pilotosAntigos = dados.pilotos || [];
+        console.log(`📂 Carregados ${pilotosAntigos.length} pilotos antigos com dataCadastro preservado`);
+        if (pilotosAntigos.length > 0) {
+          console.log(`   • Exemplo: ${pilotosAntigos[0].nome} - dataCadastro: ${pilotosAntigos[0].dataCadastro}`);
+        }
+      } else {
+        console.log(`⚠️  Arquivo não encontrado: ${caminhoJson}`);
+      }
+    } catch (err) {
+      console.log(`⚠️  Erro ao carregar arquivo anterior: ${err.message}`);
+      console.log('ℹ️  Tratando como primeira vez (todos os pilotos serão novos)');
+    }
+
+    // Formatar JSON com suporte a dataCadastro
+    const jsonData = formatPilotosJSON(pilotos, pilotosAntigos);
+    console.log('📝 JSON formatado com datas de cadastro');
 
     // Push para GitHub
     console.log('🚀 Iniciando push para GitHub...');
@@ -75,7 +102,7 @@ export async function execute(interaction, client) {
 
     if (result.success) {
       console.log('✅ Push para GitHub bem-sucedido');
-      const pilotosList = pilotos.map((p) => `• ${p.nome}: ${p.vitorias} vitórias, ${p.podios} pódios`).join('\n');
+      const pilotosList = pilotos.map((p) => `• ${p.nome}: ${p.pontos} pts, ${p.vitorias} vitória(s), ${p.podios} pódio(s)`).join('\n');
 
       await interaction.editReply(
         `✅ **Deploy realizado com sucesso!**\n\n📊 **Pilotos atualizados (${pilotos.length}):**\n${pilotosList}\n\n🚀 Dados enviados para o GitHub!\n⏰ Atualização: ${new Date().toLocaleString('pt-BR')}`

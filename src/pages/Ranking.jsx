@@ -66,11 +66,28 @@ export function RankingPage() {
 
         <div className={styles.info}>
           <h3>Como Funciona o Ranking?</h3>
+          <p><strong>Sistema de Pontos por Posição:</strong></p>
           <ul>
-            <li><strong>Vitória:</strong> 25 pontos</li>
-            <li><strong>Pódio (2º ou 3º):</strong> 8 pontos adicionais</li>
-            <li>Os dados são carregados automaticamente do Discord</li>
-            <li>O ranking é atualizado toda vez que é feito deploy no Discord</li>
+            <li>🥇 1º lugar: 25 pontos</li>
+            <li>🥈 2º lugar: 20 pontos</li>
+            <li>🥉 3º lugar: 16 pontos</li>
+            <li>4º lugar: 13 pontos</li>
+            <li>5º lugar: 11 pontos</li>
+            <li>6º lugar: 10 pontos</li>
+            <li>7º lugar: 9 pontos</li>
+            <li>8º lugar: 8 pontos</li>
+            <li>9º lugar: 7 pontos</li>
+            <li>10º lugar: 6 pontos</li>
+            <li>11º lugar: 5 pontos</li>
+            <li>12º lugar: 4 pontos</li>
+            <li>13º lugar: 3 pontos</li>
+            <li>14º lugar: 2 pontos</li>
+            <li>15º lugar: 1 ponto</li>
+          </ul>
+          <p><strong>Extras:</strong></p>
+          <ul>
+            <li>🎯 Pole Position: +1 ponto</li>
+            <li>⚡ Volta Rápida: +1 ponto</li>
           </ul>
         </div>
       </div>

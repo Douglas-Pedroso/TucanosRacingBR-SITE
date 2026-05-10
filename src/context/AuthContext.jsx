@@ -15,12 +15,29 @@ export function AuthProvider({ children }) {
     setLoading(false);
   }, []);
 
+  // Sincronizar autenticação entre abas
+  useEffect(() => {
+    const handleStorageChange = (event) => {
+      if (event.key === 'tucano_user') {
+        if (event.newValue) {
+          setUser(JSON.parse(event.newValue));
+        } else {
+          setUser(null);
+        }
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
+
   // Login - salva o usuário no localStorage
-  const login = (nickname) => {
+  const login = (nickname, isGuest = false) => {
     const userData = {
       nickname,
       id: Date.now(),
       joinedAt: new Date().toISOString(),
+      isGuest, // true se entrou como convidado, false se é piloto registrado
     };
     setUser(userData);
     localStorage.setItem('tucano_user', JSON.stringify(userData));

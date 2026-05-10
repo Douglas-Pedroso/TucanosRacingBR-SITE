@@ -12,6 +12,9 @@ function validarPilotos(data) {
     if (!piloto.nome || typeof piloto.nome !== 'string') {
       throw new Error(`Piloto ${idx}: nome inválido`);
     }
+    if (typeof piloto.pontos !== 'number' || piloto.pontos < 0) {
+      throw new Error(`Piloto ${piloto.nome}: pontos deve ser número ≥ 0`);
+    }
     if (typeof piloto.vitorias !== 'number' || piloto.vitorias < 0) {
       throw new Error(`Piloto ${piloto.nome}: vitórias deve ser número ≥ 0`);
     }
@@ -35,9 +38,10 @@ function getBasePath() {
 }
 
 /**
- * Hook para carregar dados de pilotos do JSON e calcular ranking
- * Carrega de: /docs/pilotos.json (gerado pelo build)
- * Calcula pontos: Vitória = 25 pts, Pódio = 8 pts
+ * Hook para carregar dados de pilotos do JSON e ordenar pelo ranking
+ * Carrega de: /docs/pilotos.json (gerado pelo bot Discord)
+ * Os pontos são definidos manualmente no Discord (não calcula automaticamente)
+ * Formato Discord: "Nome: pontos,vitórias,pódios"
  */
 export function useRanking() {
   const [pilotos, setPilotos] = useState([]);
@@ -86,17 +90,14 @@ export function useRanking() {
         // Validar dados
         validarPilotos(data);
         
-        // Processar dados: calcular pontos e ordenar
+        // Processar dados: mapear estrutura e ordenar por pontos (sem calcular)
         const pilotosProcessados = data.pilotos.map((piloto, index) => {
-          // Cálculo de pontos: 25 por vitória + 8 por pódio
-          const pontos = piloto.vitorias * 25 + piloto.podios * 8;
-          
           return {
             position: index + 1,
             driver: piloto.nome,
+            points: piloto.pontos,
             wins: piloto.vitorias,
             podiums: piloto.podios,
-            points: pontos,
           };
         });
 
@@ -192,15 +193,13 @@ export function usePiloto(nome) {
         }
 
         // Processar dados do piloto - formato compatível com Perfil
-        const pontos = pilotoEncontrado.vitorias * 25 + pilotoEncontrado.podios * 8;
-        
         setPiloto({
           id: pilotoEncontrado.nome,
           driver: pilotoEncontrado.nome,
           wins: pilotoEncontrado.vitorias,
           podiums: pilotoEncontrado.podios,
-          races: pilotoEncontrado.vitorias + pilotoEncontrado.podios,
-          points: pontos,
+          points: pilotoEncontrado.pontos,
+          dataCadastro: pilotoEncontrado.dataCadastro || null, // Data que o piloto foi criado no bot
         });
         
         setError(null);
