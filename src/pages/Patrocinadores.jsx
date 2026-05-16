@@ -8,22 +8,16 @@ function getBasePath() {
 export function PatrocinidoresPage() {
   const basePath = getBasePath();
   const patrocinadores = [
-    {
-      id: 1,
-      nome: 'Café Honório',
-      logo: `${basePath}/cafehonorio.png`,
-      descricao: 'Apoiador oficial da Tucanos Cup',
-      website: 'https://www.cafehonorio.com.br/',
-      isImage: true,
-    },
-    {
-      id: 3,
-      nome: 'LEGRAND Leather',
-      logo: `${basePath}/legrandlogo.png`,
-      descricao: 'Artigos em couro de qualidade premium',
-      website: 'https://legrandleather.com.br/',
-      isImage: true,
-    },
+    // Adicione novos patrocinadores aqui
+    // Exemplo:
+    // {
+    //   id: 1,
+    //   nome: 'Nome da Marca',
+    //   logo: `${basePath}/logo.png`,
+    //   descricao: 'Descrição do patrocínio',
+    //   website: 'https://website.com.br/',
+    //   isImage: true,
+    // },
   ];
 
   return (
