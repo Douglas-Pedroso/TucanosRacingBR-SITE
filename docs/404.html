@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TUCANOS CUP</title>
+  <script>
+    // Captura a rota tentada e redireciona para index.html com a rota como parâmetro
+    const url = window.location.pathname;
+    if (!url.includes('/TucanosRacingBR-SITE/')) {
+      window.location.replace('/TucanosRacingBR-SITE/');
+    } else {
+      // Armazena a rota tentada e redireciona para index.html
+      sessionStorage.redirect = url;
+      window.location.replace('/TucanosRacingBR-SITE/index.html');
+    }
+  </script>
+</head>
+<body>
+  Redirecionando...
+</body>
+</html>
